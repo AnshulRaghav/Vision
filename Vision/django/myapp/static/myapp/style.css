@@ -1,0 +1,33 @@
+*
+{
+  box-sizing:border-box;
+}
+
+.text-primary
+{
+  font-weight: 500;
+}
+
+@media screen and (min-width:768.9px){
+
+  .result,.data
+  {
+    border:1px solid rgba(0,0,0,.2);
+  }
+}
+
+@media screen and (max-width:768.9px){
+
+  .result
+  {
+    box-shadow: 1px 2px 7px rgba(0,0,0,.2),1px -2px 3px rgba(0,0,0,.1);
+  }
+}
+
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

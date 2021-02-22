@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>{% block title %}My App{% endblock %}</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+
+<style type="text/css">
+  *
+{
+  box-sizing:border-box;
+}
+
+.text-primary
+{
+  font-weight: 500;
+}
+
+@media screen and (min-width:768.9px){
+
+  .result,.data
+  {
+    border:1px solid rgba(0,0,0,.2);
+  }
+}
+
+@media screen and (max-width:768.9px){
+
+  .result
+  {
+    box-shadow: 1px 2px 7px rgba(0,0,0,.2),1px -2px 3px rgba(0,0,0,.1);
+  }
+}
+
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+</style>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg bg-light">
+  <ul class="navbar-nav">
+  	<li class="nav-item">
+      <a class="nav-link text-dark" href="{% url 'myapp:home' %}"><h4 class="mb-0">VISION</h4></a>
+    </li>   
+  </ul>
+</nav>
+<div class="container-fluid mt-1 p-0">
+  <div class="row d-flex justify-content-center ">
+    <div class="col-md-6 col-lg-5 col-12 data">
+      <div class="col-12 d-flex justify-content-center pt-2">
+        <h5><u>Enter app specifications</u></h5>
+      </div>
+      <form accept="" method="post">
+        {% csrf_token %}
+      <div class="col-12 d-flex pt-4 pb-1">
+        <h6 class="w-50">Category:</h6>
+        <select class="form-control w-50" id="sel1" name="category" required>
+    <option selected=""></option>
+    <option>ART_AND_DESIGN</option>
+    <option>AUTO_AND_VEHICLES</option>
+    <option>BEAUTY</option>
+    <option>BOOKS_AND_REFERENCE</option>
+    <option>BUSINESS</option>
+    <option>COMICS</option>
+    <option>COMMUNICATION</option>
+    <option>DATING</option>
+    <option>EDUCATION</option>
+    <option>ENTERTAINMENT</option>
+    <option>EVENTS</option>
+    <option>FINANCE</option>
+    <option>FOOD_AND_DRINK</option>
+    <option>GAME_ACTION</option>
+    <option>GAME_ADVENTURE</option>
+    <option>GAME_ARCADE</option>
+    <option>GAME_BOARD</option>
+    <option>GAME_CARD</option>
+    <option>GAME_CASINO</option>
+    <option>GAME_CASUAL</option>
+    <option>GAME_EDUCATIONAL</option>
+    <option>GAME_MUSIC</option>
+    <option>GAME_PUZZLE</option>
+    <option>DATING</option>
+    <option>GAME_RACING</option>
+    <option>GAME_ROLE_PLAYING</option>
+    <option>GAME_SIMULATION</option>
+    <option>GAME_SPORTS</option>
+    <option>GAME_STRATEGY</option>
+    <option>GAME_TRIVIA</option>
+    <option>GAME_WORD</option>
+    <option>HEALTH_AND_FITNESS</option>
+    <option>HOUSE_AND_HOME</option>
+    <option>LIBRARIES_AND_DEMO</option>
+    <option>LIFESTYLE</option>
+    <option>MAPS_AND_NAVIGATION</option>
+    <option>MEDICAL</option>
+    <option>MUSIC_AND_AUDIO</option>
+    <option>NEWS_AND_MAGAZINES</option>
+    <option>PARENTING</option>
+    <option>PERSONALIZATION</option>
+    <option>PHOTOGRAPHY</option>
+    <option>PRODUCTIVITY</option>
+    <option>SHOPPING</option>
+    <option>SOCIAL</option>
+    <option>SPORTS</option>
+    <option>TOOLS</option>
+    <option>TRAVEL</option>
+    <option>TRAVEL_AND_LOCAL</option>
+    <option>VIDEO_PLAYERS</option>
+    <option>WEATHER</option>
+  </select>
+      </div>
+      <div class="col-12  d-flex pt-1 pb-1">
+        <h6 class="w-50">Price:</h6>
+        <select class="form-control w-50" id="sel2" name="price" required>
+    <option selected=""></option>
+    <option>Free</option>
+    <option>Paid</option>
+  </select>
+      </div> 
+      <div class="col-12  d-flex pt-1 pb-1">
+        <h6 class="w-50">Content Rating:</h6>
+        <select class="form-control w-50" id="sel3" name="content_rating" required>
+          <option selected></option>
+            <option>Everyone</option>
+            <option>Teen</option>
+            <option>Everyone 10+</option>
+            <option>Mature 17+</option>
+            <option>Unrated</option>
+            <option>Adults only 18+</option>
+        </select>
+      </div> 
+      <div class="col-12 d-flex pt-1 pb-3">
+        <h6 class="w-50">Size(Mb):</h6><input type="number" name="size" required class="w-50 form-control" min="0">
+      </div> 
+      <div class="col-12 d-flex justify-content-center pt-1 pb-2"><button type="submit" class="btn btn-info" name="submit">Submit</button></div>
+      </form>   
+        </div>
+      </div>
+    </div>
+
+{% if category %}
+<div class="container-fluid mt-4 p-0">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-lg-5 col-12 result">
+      <div class="col-12 d-flex flex-wrap pt-2">
+        <h6 class="w-50">Category:</h6><p class="w-50">{{category}}</p>
+      </div>
+      <div class="col-12  d-flex">
+        <h6 class="w-50">Price:</h6><p class="w-50">{{price}}</p>
+      </div> 
+      <div class="col-12  d-flex">
+        <h6 class="w-50">Content Rating:</h6><p class="w-50">{{content_rating}}</p>
+      </div> 
+      <div class="col-12 d-flex">
+        <h6 class="w-50">Size:</h6><p class="w-50">{{size}}</p>
+      </div> 
+      <div class="col-12 d-flex pb-2">
+        <h6 class="w-50">No. of downloads:</h6><p class="w-50 text-primary">{{result}}</p>
+      </div>   
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+
+
+</body>
+</html>
