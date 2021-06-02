@@ -7,7 +7,7 @@
 - The website version is available on [pythonanywhere](https://anshulraghav.pythonanywhere.com/)
 - The app prediction accuracy is around **60%.**
 
-The repository contains two directoris:
+The repository contains two directories:
 - Django
 - React Native
 
