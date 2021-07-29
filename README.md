@@ -1,6 +1,7 @@
 # Vision
 
 <img src="https://github.com/AnshulRaghav/Vision/blob/master/wq.png" width="360" height="520"/>
+
 ### A web-app that can predict the possible no. of downloads for an app. It uses Decision Tree algorithm to perform the task. 
 #### Motivation: To help developers and businesses to gain an edge over the app market.
 
